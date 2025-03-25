@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 // import {axios} from "axios";
 
 export interface User {

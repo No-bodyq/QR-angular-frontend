@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment';
+ // ✅ Import environment
 
 @Component({
   selector: 'app-admin-user-search',
@@ -8,14 +9,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   templateUrl: './admin-user-search.component.html',
   styleUrl: './admin-user-search.component.css'
 })
-export class AdminUserSearchComponent implements OnInit{
+export class AdminUserSearchComponent implements OnInit {
   matricNumber: string = ''; // Stores the search input
   userDetails: any = null; // Stores searched user data
   isLoading = false;
   errorMessage: string = '';
   allUsers: any[] = []; // ✅ Stores all users
   filteredUsers: any[] = []; // ✅ Stores filtered users
-  private baseUrl = 'http://localhost:8000/api/v1';
+  private apiUrl = `${environment.apiUrl}/api/v1`; // ✅ Use environment variable
 
   constructor(private http: HttpClient) {}
 
@@ -38,7 +39,7 @@ export class AdminUserSearchComponent implements OnInit{
       'Authorization': `Bearer ${token}`
     });
 
-    this.http.get(`${this.baseUrl}/users`, { headers }).subscribe({
+    this.http.get(`${this.apiUrl}/users`, { headers }).subscribe({
       next: (response: any) => {
         this.allUsers = response;
         this.filteredUsers = response;
@@ -78,7 +79,7 @@ export class AdminUserSearchComponent implements OnInit{
 
     const body = new HttpParams().set('matricNumber', this.matricNumber);
 
-    this.http.post(`${this.baseUrl}/user-meal/get-user-meal-by-mat-no`, body.toString(), { headers }).subscribe({
+    this.http.post(`${this.apiUrl}/user-meal/get-user-meal-by-mat-no`, body.toString(), { headers }).subscribe({
       next: (response) => {
         if (response) {
           this.userDetails = response;
@@ -107,7 +108,4 @@ export class AdminUserSearchComponent implements OnInit{
       );
     }
   }
-  
-  
-  
 }
