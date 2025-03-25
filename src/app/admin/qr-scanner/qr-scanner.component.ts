@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BarcodeFormat } from '@zxing/library';
 import * as CryptoJS from 'crypto-js';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-qr-scanner',

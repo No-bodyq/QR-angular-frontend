@@ -4,7 +4,7 @@ import { QrGenerationComponent } from '../qr-generation/qr-generation.component'
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js'; 
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 interface User {
   id: number;
